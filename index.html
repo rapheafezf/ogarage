@@ -62,48 +62,45 @@
 <body class="bg-gray-50">
 
     <!-- --- NOUVEAU SCRIPT DE MOT DE PASSE --- -->
-    <script>
-        (function() { // IIFE pour éviter de polluer le scope global
-            const correctPassword = "accès privé";
+   <script>
+        (function() {
+            const correctPassword = "123";
             let attempts = 0;
-            const maxAttempts = 3; // Limite le nombre d'essais
+            const maxAttempts = 3;
 
             function askPassword() {
                 const userInput = prompt(`Veuillez entrer le mot de passe (${maxAttempts - attempts} essai(s) restant(s)) :`);
                 attempts++;
 
-                // Vérifie si l'utilisateur a entré quelque chose et si c'est correct (ignorer la casse et les espaces blancs)
                 if (userInput !== null && userInput.trim().toLowerCase() === correctPassword.toLowerCase()) {
-                    // Mot de passe correct : afficher le contenu
-                    const mainContent = document.getElementById('main-content-wrapper');
-                    if (mainContent) {
-                        mainContent.style.display = 'block';
-                    } else {
-                         // Si l'élément n'est pas trouvé (ne devrait pas arriver si le HTML est correct)
-                        console.error("Erreur : Conteneur principal #main-content-wrapper non trouvé.");
-                        document.body.innerHTML = '<p style="color: red; text-align: center; padding: 20px;">Erreur critique : Impossible d\'afficher le contenu.</p>';
-                    }
-                    return true; // Succès
+                    // Mot de passe correct, afficher le contenu
+                    let checkInterval = setInterval(function() {
+                        const mainContentElement = document.getElementById('main-content-wrapper');
+                        if (mainContentElement) {
+                            // Le conteneur est maintenant trouvé, l'afficher
+                            mainContentElement.style.display = 'block';
+                            clearInterval(checkInterval); // Arrêter l'intervalle
+                        } else {
+                            // Log pour le débuggage, peut être supprimé
+                            console.log("En attente de chargement de l'élément main-content-wrapper...");
+                        }
+                    }, 50); // Vérifier toutes les 50ms
+                    return true;
                 } else {
-                    // Mot de passe incorrect ou Annuler
-                    if (attempts < maxAttempts && userInput !== null) {
-                        // Si l'utilisateur n'a pas cliqué sur Annuler et qu'il reste des essais
-                        alert("Mot de passe incorrect. Veuillez réessayer.");
-                        return askPassword(); // Demander à nouveau
-                    } else {
-                        // Trop d'essais ou Annuler
-                        alert("Accès refusé.");
-                        // Afficher un message permanent et ne rien faire d'autre (le contenu reste caché)
-                        document.body.innerHTML = '<p style="color: red; text-align: center; font-size: 1.2em; padding: 50px;">Accès refusé. Veuillez recharger la page pour essayer à nouveau.</p>';
-                        return false; // Échec
-                    }
+                     if (attempts < maxAttempts && userInput !== null) {
+                         alert("Mot de passe incorrect. Veuillez réessayer.");
+                         return askPassword();
+                     } else {
+                         alert("Accès refusé.");
+                         // Afficher un message permanent et ne rien faire d'autre (le contenu reste caché)
+                         document.body.innerHTML = '<p style="color: red; text-align: center; font-size: 1.2em; padding: 50px;">Accès refusé. Veuillez recharger la page pour essayer à nouveau.</p>';
+                         return false;
+                     }
                 }
             }
 
-            // Lancer la demande de mot de passe dès le chargement du script
             askPassword();
-
-        })(); // Fin de l'IIFE
+        })();
     </script>
     <!-- --- FIN NOUVEAU SCRIPT DE MOT DE PASSE --- -->
 
