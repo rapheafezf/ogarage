@@ -1,0 +1,894 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ô Garage Pizzeria Restaurant - Hures-la-Parade</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Roboto:wght@300;400;500&display=swap');
+        
+        body {
+            font-family: 'Roboto', sans-serif;
+            scroll-behavior: smooth;
+        }
+        
+        .title-font {
+            font-family: 'Playfair Display', serif;
+        }
+        
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://images.unsplash.com/photo-1513104890138-7c749659a591?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .pizza-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        
+        .gallery-item {
+            transition: all 0.3s ease;
+        }
+        
+        .gallery-item:hover {
+            transform: scale(1.03);
+        }
+        
+        .menu-category.active {
+            border-bottom: 3px solid #eab308;
+            color: #eab308;
+        }
+        
+        .testimonial-card {
+            transition: all 0.3s ease;
+        }
+        
+        .testimonial-card:hover {
+            transform: scale(1.02);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Header -->
+    <header class="sticky top-0 z-50 bg-white shadow-md">
+        <div class="container mx-auto px-4 py-6 flex justify-between items-center">
+            <div class="flex items-center">
+                <img src="logo.png" alt="Logo O'Garage" class="h-16 w-auto mr-3">
+                <h1 class="title-font text-3xl font-bold text-gray-800">Ô GARAGE</h1>
+            </div>
+            <nav class="hidden md:flex space-x-8">
+                <a href="#accueil" class="text-gray-700 hover:text-yellow-500 font-medium">Accueil</a>
+                <a href="#menu" class="text-gray-700 hover:text-yellow-500 font-medium">Menu</a>
+                <a href="#galerie" class="text-gray-700 hover:text-yellow-500 font-medium">Galerie</a>
+                <a href="#avis" class="text-gray-700 hover:text-yellow-500 font-medium">Avis</a>
+                <a href="#contact" class="text-gray-700 hover:text-yellow-500 font-medium">Contact</a>
+            </nav>
+            <div class="md:hidden">
+                <button id="menu-toggle" class="text-gray-700 focus:outline-none">
+                    <i class="fas fa-bars text-2xl"></i>
+                </button>
+            </div>
+        </div>
+        <!-- Mobile menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white py-2 px-4 shadow-lg">
+            <div class="flex flex-col space-y-3">
+                <a href="#accueil" class="text-gray-700 hover:text-yellow-500 font-medium py-1">Accueil</a>
+                <a href="#menu" class="text-gray-700 hover:text-yellow-500 font-medium py-1">Menu</a>
+                <a href="#galerie" class="text-gray-700 hover:text-yellow-500 font-medium py-1">Galerie</a>
+                <a href="#avis" class="text-gray-700 hover:text-yellow-500 font-medium py-1">Avis</a>
+                <a href="#contact" class="text-gray-700 hover:text-yellow-500 font-medium py-1">Contact</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="accueil" class="hero min-h-screen flex items-center justify-center text-center text-white">
+        <div class="container mx-auto px-4">
+            <h1 class="title-font text-5xl md:text-7xl font-bold mb-6">Ô Garage Pizzeria</h1>
+            <p class="text-xl md:text-2xl mb-8 max-w-2xl mx-auto">Restaurant français et pizzeria à Hures-la-Parade - Note : 4.6/5</p>
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <a href="#reservation" class="bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-3 px-6 rounded-full transition duration-300">Réserver une table</a>
+                <a href="#menu" class="bg-transparent hover:bg-white hover:text-gray-800 text-white font-bold py-3 px-6 border-2 border-white rounded-full transition duration-300">Voir le menu</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-10 md:mb-0 md:pr-10">
+                    <img src="https://media-cdn.tripadvisor.com/media/photo-m/1280/19/2f/24/e4/facade.jpg" alt="Restaurant O'Garage" class="rounded-lg shadow-xl w-full h-auto">
+                </div>
+                <div class="md:w-1/2">
+                    <h2 class="title-font text-3xl md:text-4xl font-bold text-gray-800 mb-6">Notre Histoire</h2>
+                    <p class="text-gray-600 mb-4">Ô Garage Pizzeria Restaurant est classé N°2 sur 5 restaurants à Hures-la-Parade, offrant une cuisine française et italienne de qualité.</p>
+                    <p class="text-gray-600 mb-6">Notre établissement, récompensé par le prix "Travellers' Choice", vous accueille dans un cadre chaleureux avec une cuisine adaptée aux végétariens.</p>
+                    <div class="flex flex-wrap gap-4">
+                        <div class="flex items-center bg-gray-100 rounded-full px-4 py-2">
+                            <i class="fas fa-star text-yellow-500 mr-2"></i>
+                            <span class="text-gray-700">Note : 4.6/5 (84 avis)</span>
+                        </div>
+                        <div class="flex items-center bg-gray-100 rounded-full px-4 py-2">
+                            <i class="fas fa-wheelchair text-yellow-500 mr-2"></i>
+                            <span class="text-gray-700">Accessible PMR</span>
+                        </div>
+                        <div class="flex items-center bg-gray-100 rounded-full px-4 py-2">
+                            <i class="fas fa-car text-yellow-500 mr-2"></i>
+                            <span class="text-gray-700">Parking client</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Menu Section -->
+    <section id="menu" class="py-20 bg-gray-100">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="title-font text-3xl md:text-4xl font-bold text-gray-800 mb-4">Notre Menu</h2>
+                <div class="w-24 h-1 bg-yellow-500 mx-auto mb-6"></div>
+                <p class="text-gray-600 max-w-2xl mx-auto">Découvrez nos spécialités italiennes préparées avec passion et authenticité.</p>
+            </div>
+            
+            <div class="flex overflow-x-auto pb-4 mb-8 scrollbar-hide">
+                <div class="flex space-x-4">
+                    <button class="menu-category active px-6 py-2 font-medium text-gray-700" data-category="pizzas">Pizzas</button>
+                    <button class="menu-category px-6 py-2 font-medium text-gray-700" data-category="pastas">Pâtes</button>
+                    <button class="menu-category px-6 py-2 font-medium text-gray-700" data-category="antipasti">Antipasti</button>
+                    <button class="menu-category px-6 py-2 font-medium text-gray-700" data-category="desserts">Desserts</button>
+                    <button class="menu-category px-6 py-2 font-medium text-gray-700" data-category="boissons">Boissons</button>
+                </div>
+            </div>
+            
+            <!-- Pizzas Menu -->
+            <div id="pizzas" class="menu-content grid md:grid-cols-2 gap-8">
+                <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition duration-300">
+                    <div class="relative h-48 mb-4 rounded-lg overflow-hidden">
+                        <img src="https://media-cdn.tripadvisor.com/media/photo-o/19/02/dc/18/img-20190828-145323-largejpg.jpg" alt="Pizza Margherita" class="w-full h-full object-cover">
+                    </div>
+                    <div class="flex justify-between items-start mb-2">
+                        <h3 class="title-font text-xl font-bold text-gray-800">Margherita</h3>
+                        <span class="bg-yellow-100 text-yellow-800 text-sm font-medium px-3 py-1 rounded-full">12€</span>
+                    </div>
+                    <p class="text-gray-600 mb-4">Sauce tomate, mozzarella, basilic frais</p>
+                    <div class="flex items-center text-sm text-gray-500">
+                        <i class="fas fa-pepper-hot text-yellow-500 mr-1"></i>
+                        <span>Option piment disponible</span>
+                    </div>
+                </div>
+                
+                <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition duration-300">
+                    <div class="relative h-48 mb-4 rounded-lg overflow-hidden">
+                        <img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/22/57/cb/89/restaurant-gourmand-causse.jpg" alt="Pizza Diavola" class="w-full h-full object-cover">
+                    </div>
+                    <div class="flex justify-between items-start mb-2">
+                        <h3 class="title-font text-xl font-bold text-gray-800">Diavola</h3>
+                        <span class="bg-yellow-100 text-yellow-800 text-sm font-medium px-3 py-1 rounded-full">14€</span>
+                    </div>
+                    <p class="text-gray-600 mb-4">Sauce tomate, mozzarella, salami piquant, olives</p>
+                    <div class="flex items-center text-sm text-gray-500">
+                        <i class="fas fa-pepper-hot text-red-500 mr-1"></i>
+                        <span>Épicé</span>
+                    </div>
+                </div>
+                
+                <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition duration-300">
+                    <div class="relative h-48 mb-4 rounded-lg overflow-hidden">
+                        <img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/2f/58/4a/be/caption.jpg" alt="Pizza Quattro Formaggi" class="w-full h-full object-cover">
+                    </div>
+                    <div class="flex justify-between items-start mb-2">
+                        <h3 class="title-font text-xl font-bold text-gray-800">Quattro Formaggi</h3>
+                        <span class="bg-yellow-100 text-yellow-800 text-sm font-medium px-3 py-1 rounded-full">15€</span>
+                    </div>
+                    <p class="text-gray-600 mb-4">Mozzarella, gorgonzola, parmesan, chèvre</p>
+                </div>
+                
+                <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition duration-300">
+                    <div class="relative h-48 mb-4 rounded-lg overflow-hidden">
+                        <img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/10/f9/63/86/surprise-tres-agreable.jpg" alt="Pizza Truffée" class="w-full h-full object-cover">
+                    </div>
+                    <div class="flex justify-between items-start mb-2">
+                        <h3 class="title-font text-xl font-bold text-gray-800">Truffée</h3>
+                        <span class="bg-yellow-100 text-yellow-800 text-sm font-medium px-3 py-1 rounded-full">18€</span>
+                    </div>
+                    <p class="text-gray-600 mb-4">Crème fraîche, mozzarella, champignons, truffe</p>
+                    <div class="flex items-center text-sm text-gray-500">
+                        <i class="fas fa-star text-yellow-500 mr-1"></i>
+                        <span>Spécialité de la maison</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Pastas Menu -->
+            <div id="pastas" class="menu-content hidden grid md:grid-cols-2 gap-8">
+                <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition duration-300">
+                    <div class="relative h-48 mb-4 rounded-lg overflow-hidden">
+                        <img src="https://media-cdn.tripadvisor.com/media/photo-o/19/2f/24/e4/facade.jpg" alt="Spaghetti Carbonara" class="w-full h-full object-cover">
+                    </div>
+                    <div class="flex justify-between items-start mb-2">
+                        <h3 class="title-font text-xl font-bold text-gray-800">Spaghetti Carbonara</h3>
+                        <span class="bg-yellow-100 text-yellow-800 text-sm font-medium px-3 py-1 rounded-full">14€</span>
+                    </div>
+                    <p class="text-gray-600 mb-4">Spaghetti, œuf, pancetta, parmesan, crème</p>
+                </div>
+                
+                <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition duration-300">
+                    <div class="relative h-48 mb-4 rounded-lg overflow-hidden">
+                        <img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/14/4b/00/a9/vue-panoramique-depuis.jpg" alt="Penne Arrabbiata" class="w-full h-full object-cover">
+                    </div>
+                    <div class="flex justify-between items-start mb-2">
+                        <h3 class="title-font text-xl font-bold text-gray-800">Penne Arrabbiata</h3>
+                        <span class="bg-yellow-100 text-yellow-800 text-sm font-medium px-3 py-1 rounded-full">13€</span>
+                    </div>
+                    <p class="text-gray-600 mb-4">Penne, sauce tomate pimentée, ail, basilic</p>
+                    <div class="flex items-center text-sm text-gray-500">
+                        <i class="fas fa-pepper-hot text-red-500 mr-1"></i>
+                        <span>Épicé</span>
+                    </div>
+                </div>
+                
+                <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition duration-300">
+                    <div class="relative h-48 mb-4 rounded-lg overflow-hidden">
+                        <img src="https://media-cdn.tripadvisor.com/media/photo-o/19/2f/24/e4/facade.jpg" alt="Ravioli Ricotta" class="w-full h-full object-cover">
+                    </div>
+                    <div class="flex justify-between items-start mb-2">
+                        <h3 class="title-font text-xl font-bold text-gray-800">Ravioli Ricotta</h3>
+                        <span class="bg-yellow-100 text-yellow-800 text-sm font-medium px-3 py-1 rounded-full">16€</span>
+                    </div>
+                    <p class="text-gray-600 mb-4">Ravioli maison à la ricotta, sauce tomate, basilic</p>
+                </div>
+                
+                <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition duration-300">
+                    <div class="relative h-48 mb-4 rounded-lg overflow-hidden">
+                        <img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/10/f9/63/86/surprise-tres-agreable.jpg" alt="Lasagnes Bolognaise" class="w-full h-full object-cover">
+                    </div>
+                    <div class="flex justify-between items-start mb-2">
+                        <h3 class="title-font text-xl font-bold text-gray-800">Lasagnes Bolognaise</h3>
+                        <span class="bg-yellow-100 text-yellow-800 text-sm font-medium px-3 py-1 rounded-full">15€</span>
+                    </div>
+                    <p class="text-gray-600 mb-4">Lasagnes maison, bolognaise, béchamel, parmesan</p>
+                </div>
+            </div>
+            
+            <!-- Antipasti Menu -->
+            <div id="antipasti" class="menu-content hidden grid md:grid-cols-2 gap-8">
+                <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition duration-300">
+                    <div class="flex justify-between items-start mb-2">
+                        <h3 class="title-font text-xl font-bold text-gray-800">Bruschetta</h3>
+                        <span class="bg-yellow-100 text-yellow-800 text-sm font-medium px-3 py-1 rounded-full">8€</span>
+                    </div>
+                    <p class="text-gray-600 mb-4">Pain grillé, tomates fraîches, ail, basilic, huile d'olive</p>
+                </div>
+                
+                <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition duration-300">
+                    <div class="flex justify-between items-start mb-2">
+                        <h3 class="title-font text-xl font-bold text-gray-800">Assiette de Charcuterie</h3>
+                        <span class="bg-yellow-100 text-yellow-800 text-sm font-medium px-3 py-1 rounded-full">12€</span>
+                    </div>
+                    <p class="text-gray-600 mb-4">Sélection de charcuteries italiennes, olives, cornichons</p>
+                </div>
+                
+                <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition duration-300">
+                    <div class="flex justify-between items-start mb-2">
+                        <h3 class="title-font text-xl font-bold text-gray-800">Caprese</h3>
+                        <span class="bg-yellow-100 text-yellow-800 text-sm font-medium px-3 py-1 rounded-full">10€</span>
+                    </div>
+                    <p class="text-gray-600 mb-4">Tomates, mozzarella di bufala, basilic, huile d'olive</p>
+                </div>
+                
+                <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition duration-300">
+                    <div class="flex justify-between items-start mb-2">
+                        <h3 class="title-font text-xl font-bold text-gray-800">Calamars Frits</h3>
+                        <span class="bg-yellow-100 text-yellow-800 text-sm font-medium px-3 py-1 rounded-full">11€</span>
+                    </div>
+                    <p class="text-gray-600 mb-4">Calamars panés, sauce tartare maison</p>
+                </div>
+            </div>
+            
+            <!-- Desserts Menu -->
+            <div id="desserts" class="menu-content hidden grid md:grid-cols-2 gap-8">
+                <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition duration-300">
+                    <div class="flex justify-between items-start mb-2">
+                        <h3 class="title-font text-xl font-bold text-gray-800">Tiramisu</h3>
+                        <span class="bg-yellow-100 text-yellow-800 text-sm font-medium px-3 py-1 rounded-full">7€</span>
+                    </div>
+                    <p class="text-gray-600 mb-4">Mascarpone, café, cacao, biscuits</p>
+                </div>
+                
+                <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition duration-300">
+                    <div class="flex justify-between items-start mb-2">
+                        <h3 class="title-font text-xl font-bold text-gray-800">Panna Cotta</h3>
+                        <span class="bg-yellow-100 text-yellow-800 text-sm font-medium px-3 py-1 rounded-full">6€</span>
+                    </div>
+                    <p class="text-gray-600 mb-4">Crème vanille, coulis de fruits rouges</p>
+                </div>
+                
+                <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition duration-300">
+                    <div class="flex justify-between items-start mb-2">
+                        <h3 class="title-font text-xl font-bold text-gray-800">Profiteroles</h3>
+                        <span class="bg-yellow-100 text-yellow-800 text-sm font-medium px-3 py-1 rounded-full">8€</span>
+                    </div>
+                    <p class="text-gray-600 mb-4">Choux, glace vanille, sauce chocolat chaude</p>
+                </div>
+                
+                <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition duration-300">
+                    <div class="flex justify-between items-start mb-2">
+                        <h3 class="title-font text-xl font-bold text-gray-800">Cannoli Siciliani</h3>
+                        <span class="bg-yellow-100 text-yellow-800 text-sm font-medium px-3 py-1 rounded-full">6€</span>
+                    </div>
+                    <p class="text-gray-600 mb-4">Pâte croustillante, ricotta, pistaches</p>
+                </div>
+            </div>
+            
+            <!-- Boissons Menu -->
+            <div id="boissons" class="menu-content hidden grid md:grid-cols-2 gap-8">
+                <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition duration-300">
+                    <div class="flex justify-between items-start mb-2">
+                        <h3 class="title-font text-xl font-bold text-gray-800">Sélection de Vins</h3>
+                        <span class="bg-yellow-100 text-yellow-800 text-sm font-medium px-3 py-1 rounded-full">À partir de 5€</span>
+                    </div>
+                    <p class="text-gray-600 mb-4">Verre de vin rouge, blanc ou rosé</p>
+                </div>
+                
+                <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition duration-300">
+                    <div class="flex justify-between items-start mb-2">
+                        <h3 class="title-font text-xl font-bold text-gray-800">Bières</h3>
+                        <span class="bg-yellow-100 text-yellow-800 text-sm font-medium px-3 py-1 rounded-full">À partir de 4€</span>
+                    </div>
+                    <p class="text-gray-600 mb-4">Sélection de bières artisanales</p>
+                </div>
+                
+                <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition duration-300">
+                    <div class="flex justify-between items-start mb-2">
+                        <h3 class="title-font text-xl font-bold text-gray-800">Cocktails</h3>
+                        <span class="bg-yellow-100 text-yellow-800 text-sm font-medium px-3 py-1 rounded-full">À partir de 8€</span>
+                    </div>
+                    <p class="text-gray-600 mb-4">Sélection de cocktails classiques</p>
+                </div>
+                
+                <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition duration-300">
+                    <div class="flex justify-between items-start mb-2">
+                        <h3 class="title-font text-xl font-bold text-gray-800">Boissons Sans Alcool</h3>
+                        <span class="bg-yellow-100 text-yellow-800 text-sm font-medium px-3 py-1 rounded-full">À partir de 3€</span>
+                    </div>
+                    <p class="text-gray-600 mb-4">Eaux, sodas, jus de fruits</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="galerie" class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="title-font text-3xl md:text-4xl font-bold text-gray-800 mb-4">Galerie</h2>
+                <div class="w-24 h-1 bg-yellow-500 mx-auto mb-6"></div>
+                <p class="text-gray-600 max-w-2xl mx-auto">Découvrez l'ambiance unique d'O'Garage à travers ces photos.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="gallery-item overflow-hidden rounded-lg shadow-md cursor-pointer" onclick="openLightbox(this)">
+                    <img src="https://media-cdn.tripadvisor.com/media/photo-m/1280/19/2f/24/e4/facade.jpg" alt="Façade du restaurant" class="w-full h-64 object-cover">
+                </div>
+                <div class="gallery-item overflow-hidden rounded-lg shadow-md cursor-pointer" onclick="openLightbox(this)">
+                    <img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/10/f9/63/86/surprise-tres-agreable.jpg?w=1000&h=600&s=1" alt="Intérieur du restaurant" class="w-full h-64 object-gray-500">
+                </div>
+                <div class="gallery-item overflow-hidden rounded-lg shadow-md cursor-pointer" onclick="openLightbox(this)">
+                    <img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/2f/58/4a/be/caption.jpg?w=600&h=400&s=1" alt="Spécialités culinaires" class="w-full h-64 object-cover">
+                </div>
+                <div class="gallery-item overflow-hidden rounded-lg shadow-md cursor-pointer" onclick="openLightbox(this)">
+                    <img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/22/57/cb/89/restaurant-gourmand-causse.jpg?w=400&h=400&s=1" alt="Plats du restaurant" class="w-full h-64 object-cover">
+                </div>
+                <div class="gallery-item overflow-hidden rounded-lg shadow-md cursor-pointer" onclick="openLightbox(this)">
+                    <img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/19/02/dc/18/img-20190828-145323-largejpg.jpg?w=400&h=400&s=1" alt="Ambiance du restaurant" class="w-full h-64 object-cover">
+                </div>
+                <div class="gallery-item overflow-hidden rounded-lg shadow-md cursor-pointer" onclick="openLightbox(this)">
+                    <img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/14/4b/00/a9/vue-panoramique-depuis.jpg?w=400&h=400&s=1" alt="Vue panoramique" class="w-full h-64 object-cover">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Lightbox -->
+    <div id="lightbox" class="fixed inset-0 bg-black bg-opacity-90 z-50 hidden">
+        <div class="absolute top-4 right-4">
+            <button onclick="closeLightbox()" class="text-white text-4xl hover:text-yellow-500 transition duration-300">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="flex items-center justify-center h-full">
+            <img id="lightbox-img" src="" alt="" class="max-h-[90vh] max-w-[90vw] object-contain">
+        </div>
+    </div>
+
+    <!-- Testimonials Section -->
+    <section id="avis" class="py-20 bg-gray-100">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="title-font text-3xl md:text-4xl font-bold text-gray-800 mb-4">Avis Clients</h2>
+                <div class="w-24 h-1 bg-yellow-500 mx-auto mb-6"></div>
+                <p class="text-gray-600 max-w-2xl mx-auto">Ce que nos clients disent de leur expérience chez O'Garage.</p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="testimonial-card bg-white p-6 rounded-lg shadow-md">
+                    <div class="flex items-center mb-4">
+                        <div class="flex-shrink-0">
+                            <img src="https://randomuser.me/api/portraits/women/32.jpg" alt="Client" class="h-12 w-12 rounded-full">
+                        </div>
+                        <div class="ml-4">
+                            <h4 class="font-bold text-gray-800">Marie L.</h4>
+                            <div class="flex text-yellow-500">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-gray-600">"La meilleure pizza que j'ai mangée dans la région ! Les ingrédients sont frais et le goût est tout simplement exceptionnel. L'ambiance est très chaleureuse."</p>
+                </div>
+                
+                <div class="testimonial-card bg-white p-6 rounded-lg shadow-md">
+                    <div class="flex items-center mb-4">
+                        <div class="flex-shrink-0">
+                            <img src="https://randomuser.me/api/portraits/men/45.jpg" alt="Client" class="h-12 w-12 rounded-full">
+                        </div>
+                        <div class="ml-4">
+                            <h4 class="font-bold text-gray-800">Pierre D.</h4>
+                            <div class="flex text-yellow-500">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-gray-600">"Un vrai régal ! La pizza truffée est à tomber. Le service est impeccable et le cadre très agréable. Nous y retournerons sans hésiter."</p>
+                </div>
+                
+                <div class="testimonial-card bg-white p-6 rounded-lg shadow-md">
+                    <div class="flex items-center mb-4">
+                        <div class="flex-shrink-0">
+                            <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Client" class="h-12 w-12 rounded-full">
+                        </div>
+                        <div class="ml-4">
+                            <h4 class="font-bold text-gray-800">Sophie T.</h4>
+                            <div class="flex text-yellow-500">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-gray-600">"Délicieuses pâtes fraîches et excellente sélection de vins. L'équipe est très accueillante et connaît parfaitement ses produits. À recommander vivement !"</p>
+                </div>
+            </div>
+            
+            <div class="text-center mt-12">
+                <a href="https://www.tripadvisor.fr/Restaurant_Review-g2357583-d12954747-Reviews-O_Garage_Pizzeria_Restaurant-Hures_la_Parade_Lozere_Occitanie.html" target="_blank" class="inline-flex items-center bg-blue-500 hover:bg-blue-600 text-white font-bold py-3 px-6 rounded-full transition duration-300">
+                    <i class="fab fa-tripadvisor text-xl mr-2"></i>
+                    Voir plus d'avis sur Tripadvisor
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact & Reservation Section -->
+    <section id="contact" class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row">
+                <div class="md:w-1/2 mb-10 md:mb-0 md:pr-10">
+                    <h2 class="title-font text-3xl md:text-4xl font-bold text-gray-800 mb-6">Nous Contacter</h2>
+                    
+                    <div class="mb-8">
+                        <h3 class="font-bold text-gray-800 text-xl mb-4">Horaires d'ouverture</h3>
+                        <ul class="space-y-2 text-gray-600">
+                            <li class="flex items-center">
+                                <i class="fas fa-clock text-yellow-500 mr-2 w-5"></i>
+                                <span>Vendredi - Samedi : 12:00 - 22:00</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-clock text-yellow-500 mr-2 w-5"></i>
+                                <span>Dimanche : 12:00 - 14:00</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-clock text-yellow-500 mr-2 w-5"></i>
+                                <span>Fermé : Lundi, Mardi, Mercredi, Jeudi</span>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <div class="mb-8">
+                        <h3 class="font-bold text-gray-800 text-xl mb-4">Coordonnées</h3>
+                        <ul class="space-y-3 text-gray-600">
+                            <li class="flex items-center">
+                                <i class="fas fa-map-marker-alt text-yellow-500 mr-2 w-5"></i>
+                                <span>La Parade, 48150 Hures-la-Parade, France</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-phone text-yellow-500 mr-2 w-5"></i>
+                                <span>+33 4 66 45 00 00</span>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <div class="flex space-x-4">
+                        <a href="#" class="bg-blue-600 hover:bg-blue-700 text-white rounded-full w-10 h-10 flex items-center justify-center">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="bg-pink-600 hover:bg-pink-700 text-white rounded-full w-10 h-10 flex items-center justify-center">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="bg-red-500 hover:bg-red-600 text-white rounded-full w-10 h-10 flex items-center justify-center">
+                            <i class="fab fa-google"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div id="reservation" class="md:w-1/2 bg-gray-50 p-8 rounded-lg shadow-md">
+                    <h2 class="title-font text-3xl md:text-4xl font-bold text-gray-800 mb-6">Réserver une table</h2>
+                    <form id="reservation-form" class="space-y-4">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div>
+                                <label for="name" class="block text-gray-700 font-medium mb-1">Nom complet *</label>
+                                <input type="text" id="name" name="name" required
+                                    class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500"
+                                    pattern="[A-Za-zÀ-ÿ\s-]{2,50}"
+                                    title="Veuillez entrer un nom valide (2-50 caractères, lettres et espaces uniquement)">
+                                <p class="text-red-500 text-sm mt-1 hidden" id="name-error"></p>
+                            </div>
+                            <div>
+                                <label for="phone" class="block text-gray-700 font-medium mb-1">Téléphone *</label>
+                                <input type="tel" id="phone" name="phone" required
+                                    class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500"
+                                    pattern="^(\+33|0)[1-9](\d{2}){4}$"
+                                    title="Format : +33 ou 0 suivi de 9 chiffres">
+                                <p class="text-red-500 text-sm mt-1 hidden" id="phone-error"></p>
+                            </div>
+                        </div>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div>
+                                <label for="date" class="block text-gray-700 font-medium mb-1">Date *</label>
+                                <input type="date" id="date" name="date" required
+                                    class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500"
+                                    min="">
+                                <p class="text-red-500 text-sm mt-1 hidden" id="date-error"></p>
+                            </div>
+                            <div>
+                                <label for="time" class="block text-gray-700 font-medium mb-1">Heure *</label>
+                                <input type="time" id="time" name="time" required
+                                    class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500"
+                                    min="12:00" max="22:00">
+                                <p class="text-red-500 text-sm mt-1 hidden" id="time-error"></p>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <label for="guests" class="block text-gray-700 font-medium mb-1">Nombre de personnes *</label>
+                            <select id="guests" name="guests" required
+                                class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500">
+                                <option value="">Sélectionnez...</option>
+                                <option value="1">1 personne</option>
+                                <option value="2">2 personnes</option>
+                                <option value="3">3 personnes</option>
+                                <option value="4">4 personnes</option>
+                                <option value="5">5 personnes</option>
+                                <option value="6">6 personnes</option>
+                                <option value="7">7 personnes</option>
+                                <option value="8">8+ personnes</option>
+                            </select>
+                            <p class="text-red-500 text-sm mt-1 hidden" id="guests-error"></p>
+                        </div>
+                        
+                        <div>
+                            <label for="message" class="block text-gray-700 font-medium mb-1">Demandes spéciales</label>
+                            <textarea id="message" name="message" rows="3"
+                                class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500"
+                                maxlength="500"></textarea>
+                            <p class="text-gray-500 text-sm mt-1">Maximum 500 caractères</p>
+                        </div>
+                        
+                        <div class="flex items-center">
+                            <input type="checkbox" id="privacy" name="privacy" required
+                                class="h-4 w-4 text-yellow-500 focus:ring-yellow-500 border-gray-300 rounded">
+                            <label for="privacy" class="ml-2 block text-sm text-gray-700">
+                                J'accepte que mes données soient utilisées pour traiter ma réservation *
+                            </label>
+                        </div>
+                        
+                        <button type="submit" id="submit-btn"
+                            class="w-full bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-3 px-4 rounded-md transition duration-300">
+                            <span class="flex items-center justify-center">
+                                <i class="fas fa-spinner fa-spin hidden mr-2" id="spinner"></i>
+                                Confirmer la réservation
+                            </span>
+                        </button>
+                    </form>
+                    
+                    <!-- Message de confirmation -->
+                    <div id="success-message" class="hidden mt-4 p-4 bg-green-100 text-green-700 rounded-md">
+                        <i class="fas fa-check-circle mr-2"></i>
+                        Votre réservation a été envoyée avec succès ! Nous vous contacterons pour confirmation.
+                    </div>
+                    
+                    <!-- Message d'erreur -->
+                    <div id="error-message" class="hidden mt-4 p-4 bg-red-100 text-red-700 rounded-md">
+                        <i class="fas fa-exclamation-circle mr-2"></i>
+                        <span id="error-text">Une erreur est survenue. Veuillez réessayer.</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Map Section -->
+    <div class="h-96 w-full">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2850.1234567890123!2d3.456789012345678!3d44.12345678901234!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDTCsDA3JzI0LjQiTiAzwrAyNyczNi4wIkU!5e0!3m2!1sfr!2sfr!4v1234567890123!5m2!1sfr!2sfr" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <img src="logo.png" alt="Logo O'Garage" class="h-16 w-auto mb-4">
+                    <p class="text-gray-400">Pizzeria et restaurant italien authentique à Hures-la-Parade, Lozère.</p>
+                </div>
+                
+                <div>
+                    <h4 class="font-bold mb-4">Navigation</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#accueil" class="text-gray-400 hover:text-yellow-500 transition duration-300">Accueil</a></li>
+                        <li><a href="#menu" class="text-gray-400 hover:text-yellow-500 transition duration-300">Menu</a></li>
+                        <li><a href="#galerie" class="text-gray-400 hover:text-yellow-500 transition duration-300">Galerie</a></li>
+                        <li><a href="#avis" class="text-gray-400 hover:text-yellow-500 transition duration-300">Avis</a></li>
+                        <li><a href="#contact" class="text-gray-400 hover:text-yellow-500 transition duration-300">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="font-bold mb-4">Informations</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li class="flex items-center">
+                            <i class="fas fa-utensils text-yellow-500 mr-2"></i>
+                            <span>Cuisine française et italienne</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-leaf text-yellow-500 mr-2"></i>
+                            <span>Options végétariennes</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-wine-glass-alt text-yellow-500 mr-2"></i>
+                            <span>Service d'alcool</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="font-bold mb-4">Newsletter</h4>
+                    <p class="text-gray-400 mb-4">Abonnez-vous pour recevoir nos offres spéciales et actualités.</p>
+                    <form class="flex">
+                        <input type="email" placeholder="Votre email" class="px-4 py-2 w-full rounded-l-md focus:outline-none text-gray-800">
+                        <button type="submit" class="bg-yellow-500 hover:bg-yellow-600 px-4 py-2 rounded-r-md">
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400">
+                <p>&copy; 2023 O'Garage Pizzeria Restaurant. Tous droits réservés.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        document.getElementById('menu-toggle').addEventListener('click', function() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        });
+
+        // Menu category switching
+        const menuCategories = document.querySelectorAll('.menu-category');
+        const menuContents = document.querySelectorAll('.menu-content');
+        
+        menuCategories.forEach(category => {
+            category.addEventListener('click', function() {
+                // Remove active class from all categories
+                menuCategories.forEach(c => c.classList.remove('active'));
+                
+                // Add active class to clicked category
+                this.classList.add('active');
+                
+                // Hide all menu contents
+                menuContents.forEach(content => content.classList.add('hidden'));
+                
+                // Show the selected menu content
+                const categoryToShow = this.getAttribute('data-category');
+                document.getElementById(categoryToShow).classList.remove('hidden');
+            });
+        });
+
+        // Validation du formulaire de réservation
+        document.addEventListener('DOMContentLoaded', function() {
+            const form = document.getElementById('reservation-form');
+            const submitBtn = document.getElementById('submit-btn');
+            const spinner = document.getElementById('spinner');
+            const successMessage = document.getElementById('success-message');
+            const errorMessage = document.getElementById('error-message');
+            const errorText = document.getElementById('error-text');
+
+            // Définir la date minimale (aujourd'hui)
+            const dateInput = document.getElementById('date');
+            const today = new Date();
+            const minDate = today.toISOString().split('T')[0];
+            dateInput.min = minDate;
+
+            // Validation des champs
+            function validateField(field, errorId) {
+                const errorElement = document.getElementById(errorId);
+                if (!field.checkValidity()) {
+                    errorElement.textContent = field.validationMessage;
+                    errorElement.classList.remove('hidden');
+                    return false;
+                }
+                errorElement.classList.add('hidden');
+                return true;
+            }
+
+            // Validation de la date et de l'heure
+            function validateDateTime() {
+                const date = new Date(document.getElementById('date').value);
+                const time = document.getElementById('time').value;
+                const day = date.getDay();
+                const hour = parseInt(time.split(':')[0]);
+
+                // Vérifier si c'est un jour d'ouverture (vendredi, samedi ou dimanche)
+                if (day !== 5 && day !== 6 && day !== 0) {
+                    document.getElementById('date-error').textContent = "Le restaurant est fermé ce jour-là";
+                    document.getElementById('date-error').classList.remove('hidden');
+                    return false;
+                }
+
+                // Vérifier les horaires d'ouverture
+                if (day === 0 && (hour < 12 || hour >= 14)) { // Dimanche
+                    document.getElementById('time-error').textContent = "Le restaurant est ouvert de 12h à 14h le dimanche";
+                    document.getElementById('time-error').classList.remove('hidden');
+                    return false;
+                } else if ((day === 5 || day === 6) && (hour < 12 || hour >= 22)) { // Vendredi et samedi
+                    document.getElementById('time-error').textContent = "Le restaurant est ouvert de 12h à 22h le vendredi et samedi";
+                    document.getElementById('time-error').classList.remove('hidden');
+                    return false;
+                }
+
+                return true;
+            }
+
+            form.addEventListener('submit', async function(e) {
+                e.preventDefault();
+
+                // Réinitialiser les messages
+                successMessage.classList.add('hidden');
+                errorMessage.classList.add('hidden');
+
+                // Valider tous les champs
+                const nameValid = validateField(document.getElementById('name'), 'name-error');
+                const phoneValid = validateField(document.getElementById('phone'), 'phone-error');
+                const dateValid = validateField(document.getElementById('date'), 'date-error');
+                const timeValid = validateField(document.getElementById('time'), 'time-error');
+                const guestsValid = validateField(document.getElementById('guests'), 'guests-error');
+                const privacyValid = document.getElementById('privacy').checked;
+
+                if (!privacyValid) {
+                    errorText.textContent = "Veuillez accepter les conditions d'utilisation";
+                    errorMessage.classList.remove('hidden');
+                    return;
+                }
+
+                if (!nameValid || !phoneValid || !dateValid || !timeValid || !guestsValid || !validateDateTime()) {
+                    return;
+                }
+
+                // Afficher le spinner
+                submitBtn.disabled = true;
+                spinner.classList.remove('hidden');
+
+                try {
+                    // Simuler l'envoi des données (à remplacer par un appel API réel)
+                    await new Promise(resolve => setTimeout(resolve, 1500));
+
+                    // Afficher le message de succès
+                    successMessage.classList.remove('hidden');
+                    form.reset();
+
+                    // Réinitialiser le formulaire
+                    submitBtn.disabled = false;
+                    spinner.classList.add('hidden');
+                } catch (error) {
+                    errorText.textContent = "Une erreur est survenue lors de l'envoi de votre réservation. Veuillez réessayer.";
+                    errorMessage.classList.remove('hidden');
+                    submitBtn.disabled = false;
+                    spinner.classList.add('hidden');
+                }
+            });
+
+            // Validation en temps réel
+            form.querySelectorAll('input, select').forEach(field => {
+                field.addEventListener('input', function() {
+                    const errorId = this.id + '-error';
+                    validateField(this, errorId);
+                });
+            });
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Close mobile menu if open
+                    const mobileMenu = document.getElementById('mobile-menu');
+                    if (!mobileMenu.classList.contains('hidden')) {
+                        mobileMenu.classList.add('hidden');
+                    }
+                }
+            });
+        });
+
+        // Lightbox functionality
+        function openLightbox(element) {
+            const lightbox = document.getElementById('lightbox');
+            const lightboxImg = document.getElementById('lightbox-img');
+            const img = element.querySelector('img');
+            
+            lightboxImg.src = img.src;
+            lightboxImg.alt = img.alt;
+            lightbox.classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeLightbox() {
+            const lightbox = document.getElementById('lightbox');
+            lightbox.classList.add('hidden');
+            document.body.style.overflow = 'auto';
+        }
+
+        // Close lightbox when clicking outside the image
+        document.getElementById('lightbox').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeLightbox();
+            }
+        });
+
+        // Close lightbox with Escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeLightbox();
+            }
+        });
+    </script>
+</body>
+</html>
